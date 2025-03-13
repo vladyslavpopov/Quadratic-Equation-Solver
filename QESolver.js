@@ -1,24 +1,38 @@
+const fs = require('fs');
 const readline = require('readline');
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
+if (process.argv.length === 3) {
+    const filePath = process.argv[2];
 
-rl.question('Enter a: ', (a) => {
-    rl.question('Enter b: ', (b) => {
-        rl.question('Enter c: ', (c) => {
-            a = Number(a);
-            b = Number(b);
-            c = Number(c);
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        const arguments = data.split(' ').map(Number);
+        const [a, b, c] = arguments;
 
-            console.log(`Equation is: (${a}) x^2 + (${b}) x + (${c}) = 0`);
+        console.log(`Equation is: (${a}) x^2 + (${b}) x + (${c}) = 0`);
 
-            findRoots(a, b, c);
-            rl.close();
+        findRoots(a, b, c);
+    })
+} else {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    })
+
+    rl.question('Enter a: ', (a) => {
+        rl.question('Enter b: ', (b) => {
+            rl.question('Enter c: ', (c) => {
+                a = Number(a);
+                b = Number(b);
+                c = Number(c);
+
+                console.log(`Equation is: (${a}) x^2 + (${b}) x + (${c}) = 0`);
+
+                findRoots(a, b, c);
+                rl.close();
+            })
         })
     })
-})
+}
 
 const findRoots = (a, b, c) => {
     const discriminant = b ** 2 - 4 * a * c;
