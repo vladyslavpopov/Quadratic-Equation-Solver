@@ -69,3 +69,5 @@ There are 2 roots
  x1 = 2
  x2 = 1
 ```
+
+## [Revert commit](https://github.com/vladyslavpopov/Quadratic-Equation-Solver/commit/ef2e60ba7416c9a1719403c4c26d89f693836d88)
